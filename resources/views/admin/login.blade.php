@@ -58,6 +58,7 @@
     }
     a {
         color:white;
+        margin-top:20px;
     }
 
     a:hover{
@@ -68,7 +69,7 @@
         position:absolute;
         border: 1px solid #66ff66;
         padding:15px;
-        margin-top:25px;
+        margin-top:75px;
         border-radius:5px;
         box-shadow: 3px 3px none;
         color:white;

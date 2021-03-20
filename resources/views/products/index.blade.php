@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
         <div class="mx-4 mt-3 text-primary">
-            <h6><a href="{{URL::to('/admin')}}">Trang Admin</a></h6>
+            <h6><a href="{{URL::to('admin')}}">Trang Admin</a></h6>
         </div>
         <div class="col-md-10 mx-auto">
             <div class="mt-3 text-primary">
@@ -43,6 +43,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <span class="pagination justify-content-center">
+                {{ $products->render() }}
+            </span>
         </div>
 
 @endsection

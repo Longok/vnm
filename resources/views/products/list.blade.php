@@ -44,6 +44,7 @@
                 </tbody>
 
             </table>
+            <span>{{ $products->render() }}</span>
         </div>
 
 @endsection

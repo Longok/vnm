@@ -5,7 +5,6 @@
 }
 body{
     padding: 0;
-
     margin:0;
     font-size:18px;
     background: white;
@@ -14,17 +13,69 @@ body{
     background: rgb(63, 59, 59);
     margin: 0;
     padding: 0;
+    color: white;
 }
-.wrap{
-    color:white;
-    background:none;
-    margin:10px;
+.footer-network{
+    margin-left: 20px;
 }
+@media screen and (max-width:1199px){
+    .menu {
+        /* width: 100%;      */
+        background-color: #40b2f5;  
+        display: block;
+        /* float: left;  */
+        font-size: 13px;
+        line-height: 13px;
+       
+    }
+    .parent {
+        /* width:70%; */
+        /* float:left; */
+        margin: 0;
+        padding: 0;
+    }
+    .carousel {
+        width: 100%;
+    }
+    
+ } 
+ @media screen and (max-width:991px){
+
+ }
+ @media screen and (max-width:767px){
+
+ } 
+ @media screen and (max-width:575px){
+    .footer {
+        text-align: center;    
+    }
+    .footer-network {
+        margin-left:  0;
+    }
+    .link,.div {    
+        margin:auto;
+    }
+    .card {
+        text-align: center;
+    }
+    .input {
+        width: 100%;
+    }
+    .btn {
+        width: 50%;
+        height: 33%;
+        font-size: 15px;     
+    }
+ } 
 .menu{
     width: 100%;
     height: 40px;
 }
-
+.carousel-inner{
+    width: 100%;
+    padding:0;
+    margin: 0;
+}
 ul.parent > li{
     float: left;
     list-style: none;
@@ -153,6 +204,17 @@ ul.sub {
     padding:5px;
     margin: 5px;
 }
+.input {
+    width: 50%;
+    background-color:rgb(179, 248, 245);
+    text-indent: 50%;
+    border: rgb(122, 164, 241);
+}
+.btn {
+    margin-bottom: 10px;
+    height: 33px;
+}
+
 .loginbox{
     position:absolute;
 }
