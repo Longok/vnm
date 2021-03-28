@@ -13,9 +13,9 @@
     <div class="row">
         <a href="{{ URL::to('home')}}">Trang chủ</a>
         <div class="col-6 col-md-3 mx-auto">
-            <form action="{{route('admin')}}" method="post">
+            <form action="{{route('login')}}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="text-danger mt-3 ">
+                <div class="text-danger mt-5 ">
                     @if($errors->any())
                         <div class="div">
                             @foreach($errors->all() as $err)
@@ -30,24 +30,26 @@
                     @endif
                 </div>
                 <div class="loginbox">
-                    <h1>Login</h1>
+                    <h2>Đăng nhập</h2>
                     <div class="form-group">
                         <!-- <label for="email">Email</label><br> -->
                         <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-
                     </div>
                     <div class="form-group">
                         <!-- <label for="password">Password</label><br> -->
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
-
+                        <span>
+                            <input type="checkbox" class="checkbox">
+                            Ghi nhớ đăng nhập
+                        </span><br>                       
                     <button type="submit"class="btn form-control btn-primary ">Login</button>
+                    <span>
+                            <a href="{{ URL::to('/sign-up')}}">Đăng ký</a>
+                    </span>
                 </div>
-
-
             </form>
         </div>
-
     </div>
 </div>
 </body>
@@ -99,6 +101,7 @@
     }
     .btn{
         background:none;
+        margin-top: 5px;
     }
     
 </style>

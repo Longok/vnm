@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/admin', 'AdminController@index')->name('admin');
+//admin
+Route::get('admin', 'AdminController@index')->name('admin');
 Route::post('admin','AdminController@postAdminLogin')->name('adminlogin');
-
+Route::get('logout','AdminController@logout');
 //Home
 Route::get('/home','HomeController@index');
-Route::get('/home/detail/{id}','HomeController@detail');
+Route::get('/home/category/{id}','HomeController@category');
 //Category
 Route::get('category','CategoryController@create');
 Route::post('/addCategory','CategoryController@store')->name('add-category');
@@ -41,9 +41,17 @@ Route::get('/delete-slide/{id}','SlideController@delete');
 Route::get('/sign-up','UserController@create');
 Route::post('/sign-up','UserController@store')->name('sign-up');
 Route::get('/list-user','UserController@index');
+//Cart
+Route::post('/cart/{id}', 'CartController@add')->name('cart');
+Route::get('/show-cart','CartController@show_cart');
+Route::get('/delete-cart/{rowId}','CartController@delete_cart');
+Route::post('/update-cart/','CartController@update_cart');
+//Checkout
+Route::get('check-out');
 //Log-in
 Route::get('login','UserController@getLogin')->name('login');
 Route::post('login','UserController@postLogin')->name('login');
 //Log-out
 Route::get('logout','UserController@logout');
+
 

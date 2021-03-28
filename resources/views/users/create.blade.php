@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="{{asset('/bootstrap.css')}}">
 </head>
 <body>
-
-</body>
-</html>
+<div class="col-sm-8 col-md-9">
+  <a href ="{{ URL::to('/home')}}"><img src="{{ asset('image/logo.jpg') }}" height="100" width="120"></a>
+</div>
 <div class="container mt-3">
   <div class="div">
     {{-- <a href="{{route('users.index')}}">Quay lại trang chủ</a> --}}
@@ -67,4 +67,7 @@
       </form>
     </div>
   </div>
-</div>
+</div>  
+</body>
+</html>
+

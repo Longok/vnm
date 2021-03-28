@@ -1,4 +1,5 @@
 @extends('layout.master')
+@include('layout.headerAdmin')
 @section('content')
         <div class="mx-4 mt-3 text-primary d-flex">
             <h6><a href="{{URL::to('/admin')}}">Trang Admin</a></h6>

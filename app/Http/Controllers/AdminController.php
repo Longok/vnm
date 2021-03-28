@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+use Session;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -18,18 +21,36 @@ class AdminController extends Controller
 
     public function postAdminLogin( Request $request)
     {
-
-        if(Auth::Attempt([
-            'email'=>$request->email,
-            'password'=>$request->password
-            ]))
-        {
-                return view('admin');
-        }   
-        else
-        {
-            return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
+        $user = User::where(['email'=>$request->email],['password'=>$request->password])->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)){
+                Session::put('user',$user);
+                if(Auth::Attempt([
+                    'email'=>$request->email,
+                    'password'=>$request->password
+                    ]))
+                {
+                    return view('admin.index');
+                } 
+                
+            }
+            else
+                {
+                    return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
+                }   
         }
+
+        // if(Auth::Attempt([
+        //     'email'=>$request->email,
+        //     'password'=>$request->password
+        //     ]))
+        // {
+        //         return view('admin.index');
+        // }   
+        // else
+        // {
+        //     return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
+        // }
     }
 
 }

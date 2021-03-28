@@ -43,24 +43,15 @@ class UserController extends Controller
 
     public function postLogin( Request $request)
     {
-        $email = "admin@gmail.com";
-        $password = "admin";
-
         if(Auth::Attempt([
-            'email'=>$request->$email,
-            'password'=>$request->$password
-            ]))
-        {
-                return redirect('admin');
-        }
-        else if(Auth::Attempt([
             'email'=>$request->email,
             'password'=>$request->password
             ]))
         {
-            return redirect('home');
-        }    
-        else{
+                return redirect('home');
+        }
+        else
+        {
             return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
         }
     }
