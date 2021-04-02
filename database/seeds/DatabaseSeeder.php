@@ -12,7 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CategoryTableSeeder::class
+            CategoryTableSeeder::class,
+            DistrictsTableSeeder::class,
+            CityTableSeeder::class,
+            WardsTableSeeder::class
         ]);
     }
 }

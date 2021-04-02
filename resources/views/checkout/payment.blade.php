@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ URL::to('/home') }}">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            <li class="breadcrumb-item active" aria-current="page">Thanh toán đơn hàng</li>
         </ol>
     </nav>
     <div class="table-reponsive cart_info">
@@ -63,24 +63,28 @@
                 @endforeach
             </tbody>
         </table>
-    </div>    
-    <div class="col-sm-3 float-right">        
-        <div class="breadcrumb">
-            <ul>
-                <li class="breadcrumb">Thành tiền: {{cart::subtotal(0).'VNĐ'}}</li>
-                <li class="breadcrumb">Phí vận chuyển: Free </li>
-                <!-- <li class="breadcrumb">Tổng tiền: {{cart::total(0).'VNĐ'}}</li> -->
-            </ul>
-            @if(Auth::check())                           
-                <a class="breadcrumb" href ="{{URL::to('/check-out')}}">Thanh toán</a>             
-            @else                                
-                <a class="breadcrumb" href ="{{URL::to('/login')}}">Thanh toán</a>                    
-            @endif               
+        @else          
+        @endif 
+    </div> 
+    <div class="breadcrumb-item active">
+        Chọn hình thức thanh toán:
+    </div>
+    <form action="{{URL::to('/order')}}" method="post">
+    {{ csrf_field()}}
+        <div class="payment">
+            <span>
+                <label><input name="payment_method" type="checkbox" value="ATM">Thanh toán bằng ATM</label>        
+            </span>        
+            <span>
+                <label><input name="payment_method" type="checkbox" value="Tiền mặt">Thanh toán bằng tiền mặt</label>
+            </span>
+            <span>
+                <label><input name="payment_method" type="checkbox" value="VN-Pay">Thanh toán bằng VN-Pay</label>        
+            </span>
+            
         </div>
-    @else
-        <p>Bạn chưa có sản phẩm nào</p>      
-    @endif 
-    </div>      
+        <button type="submit" name="order" class="btn btn-success btn-md ">Đặt hàng</button>
+    </form>     
 </div>
 <style>
     .cart_menu {

@@ -39,18 +39,6 @@ class AdminController extends Controller
                     return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
                 }   
         }
-
-        // if(Auth::Attempt([
-        //     'email'=>$request->email,
-        //     'password'=>$request->password
-        //     ]))
-        // {
-        //         return view('admin.index');
-        // }   
-        // else
-        // {
-        //     return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
-        // }
     }
 
 }

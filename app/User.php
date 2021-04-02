@@ -10,6 +10,6 @@ class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
     protected $table ="users";
-    protected $fillable = ['name','email','password','roles'];
+    protected $fillable = ['id','name','email','password','roles'];
 
 }

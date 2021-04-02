@@ -16,32 +16,6 @@ use Illuminate\Support\Facades\Hash;
 class CartController extends Controller
 {
     
-    // public function add(Request $request, $id){
-        
-    //     $product = Product::find($id);
-    //     if(empty($_SESSION['cart']) || !array_key_exists($id, $_SESSION['cart'])){
-    //         $product['quantity'] = 1;
-    //         $_SESSION['cart'][$id] = $product;
-    //     } else{
-    //         $product['quantity'] += $_SESSION['cart'][$id]['quantity'] +1;
-    //         $_SESSION['cart'][$id] = $product;
-       
-    //     }
-    //     return view('cart.index',compact('product'));
-    // }
-    
-    // public function add( Request $request, $id){
-    //         $product =  Product::where('id', $id)->first();
-    //         if($product !=null){
-    //             $oldCart = Session('Cart') ? Session('Cart') : null;
-    //             $newCart = new Cart($oldCart);  
-    //             $newCart->AddCart($product, $id);
-    //             $request->Session()->put('Cart', $newCart);
-           
-    //         }
-    //         return view('cart.index',compact('newCart'));
-    // }
-
     public function add( Request $request, $id){
         $proId = $request->productid_hidden;
         $quantity = $request->qty;      

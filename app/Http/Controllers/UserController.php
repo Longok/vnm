@@ -9,6 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class UserController extends Controller
 {
@@ -25,14 +26,22 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = New User;
-        $user ->name = $request ->name;
-        $user ->email = $request ->email;
-        $user ->password = Hash::make($request ->password);
-        $user ->roles = $request ->roles;
-        Session::put('Thongbao','Tạo tài khoản thành công');
-        $user ->save();
-
+        // $user = New User;
+        // $user ->name = $request ->name;
+        // $user ->email = $request ->email;
+        // $user ->password = Hash::make($request ->password);
+        // $user ->roles = $request ->roles;
+        // $user ->save();
+        // Session::put('Thongbao','Tạo tài khoản thành công');
+        
+        // return redirect()->back();
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request ->password);
+        $data['roles'] = $request->roles;
+        $user_id = DB::table('users')->insertGetId($data);
+        Session::put('id',$user_id);
         return redirect()->back();
     }
 
@@ -54,6 +63,7 @@ class UserController extends Controller
         {
             return redirect()->back()->with('thongbao','Địa chỉ Email hoặc mật khẩu không đúng');
         }
+       
     }
 
     public function logout()

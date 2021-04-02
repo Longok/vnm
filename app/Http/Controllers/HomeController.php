@@ -10,6 +10,8 @@ use App\Product;
 use App\Cart;
 use App\Slide;
 use Session;
+use Auth;
+
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -27,6 +29,14 @@ class HomeController extends Controller
     {
         $products = Product::where('category_id',$id)->paginate(16);
         return view('home.category', compact('products'));
+    }
+
+    public function search(Request $request){
+        $categorys = Category::all();    
+        $slides = Slide::all();
+        $keywords = $request->keywords;
+        $search = Product::where('name','like','%'.$keywords.'%')->get();
+        return view('home.search', compact('categorys','search','slides'));
     }
 
 }

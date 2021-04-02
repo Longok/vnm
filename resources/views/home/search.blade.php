@@ -1,9 +1,7 @@
 @extends('layout.master')
 @include('layout.header')
 @section('content')
-
-<body>
-    <div class="container-fluid">
+<div class="container-fluid">
         <div class="row">
             <div class="menu col-8 ">       
             <ul class="parent col-lg-12 col-md-12 col-sm-6 col-xs-8">
@@ -54,9 +52,9 @@
             </div>
         </div>
     </div>    
-    <div class="container">
+<div class="container">
         <div class="row mt-4">
-                @foreach($products as $pro)
+                @foreach($search as $pro)
                 <div class="box col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <form action="{{Route('cart',$pro->id)}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -85,9 +83,7 @@
                 </div>
                 @endforeach
         </div>
-        <span class="pagination justify-content-center">{{ $products->render() }}</span>
-    </div>           
-</body>
+</div> 
 <script>
     $('.DM').click(function () {
         $(' ul.droplow').toggleClass("show");
@@ -105,6 +101,5 @@
          $(' ul.droplow4').toggleClass("show4");
     });
 </script>
-@include('layout.footer')
-</html>
+@include('layout.footer')       
 @endsection

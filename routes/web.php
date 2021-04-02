@@ -17,6 +17,7 @@ Route::get('logout','AdminController@logout');
 //Home
 Route::get('/home','HomeController@index');
 Route::get('/home/category/{id}','HomeController@category');
+Route::post('/search','HomeController@search');
 //Category
 Route::get('category','CategoryController@create');
 Route::post('/addCategory','CategoryController@store')->name('add-category');
@@ -47,11 +48,15 @@ Route::get('/show-cart','CartController@show_cart');
 Route::get('/delete-cart/{rowId}','CartController@delete_cart');
 Route::post('/update-cart/','CartController@update_cart');
 //Checkout
-Route::get('check-out');
-//Log-in
+Route::get('/check-out','CheckoutController@checkout');
+Route::post('/save-info-customer','CheckoutController@info_customer');
+Route::get('/payment','CheckoutController@payment');
+Route::post('/order','CheckoutController@order');
+
+//Login
 Route::get('login','UserController@getLogin')->name('login');
 Route::post('login','UserController@postLogin')->name('login');
-//Log-out
+//Logout
 Route::get('logout','UserController@logout');
 
 
