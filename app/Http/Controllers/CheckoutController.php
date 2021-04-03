@@ -74,8 +74,11 @@ class CheckoutController extends Controller
             $order_detail['product_quantity'] = $v_content->qty;
             $order_detail_id = DB::table('order_detail')->insert($order_detail);
         }
-        
-        return view('checkout.order');
+        if($payment['payment_method'] = $request->payment_method){
+            Cart::destroy();
+            return view('checkout.order');
+        }       
+        return redirect()->back();
     }
 }
 

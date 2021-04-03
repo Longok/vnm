@@ -8,9 +8,28 @@
             <li class="breadcrumb-item active" aria-current="page">Thanh toán đơn hàng</li>
         </ol>
     </nav>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    <div class="alert-danger">
+        <?php
+            $message = Session::get('Thongbao');
+            if($message){
+                echo '<span class="text-alert">'.$message.'</span>';
+                session::put('Thongbao',null);
+            }
+        ?>
+    </div>   
     <div class="table-reponsive cart_info">
         <?php
             $content = Cart::content()
+            
         ?>
         @if(count($content))
         <table class="table table-condensed">
